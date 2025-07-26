@@ -11,6 +11,7 @@ import sys
 import tempfile
 import threading
 import time
+import webbrowser
 from getpass import getpass
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
@@ -175,6 +176,7 @@ class XiaomiCloudConnector:
             # Try to serve an image file
             start_image_server(response.content)
             print_if_interactive(f"Captcha image URL: http://{args.host or '127.0.0.1'}:31415")
+            webbrowser.open('http://127.0.0.1:31415')
         except Exception as e1:
             _LOGGER.debug(e1)
             # Save image to a temporary file
